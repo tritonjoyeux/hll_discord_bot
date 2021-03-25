@@ -1,0 +1,7 @@
+export const config = {
+  token: 'TOKEN_APP_DISCORD',
+  VT: 'VOICE_CHANNEL_ID',
+  prefix: '!',
+  colorError: '#ff0000',
+  searchMaxLength: 3
+}
