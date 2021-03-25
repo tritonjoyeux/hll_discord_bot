@@ -8,17 +8,18 @@ const lengthMaxSearch = config.searchMaxLength;
 const colorError = config.colorError;
 const prefix = config.prefix;
 
-export const searchAction = (msg) => {
-  const search = msg.content.replace(prefix + 'search ', '');
+export const searchAction = (msg, command) => {
+  const search = msg.content.replace(prefix + command + ' ', '');
   //Bypass too much results
   if (search.length < lengthMaxSearch) {
     msg.channel.send(new Discord.MessageEmbed()
       .setColor(colorError)
-      .setTitle('La recherche doit avoir au moins 3 lettres'))
+      .setTitle('La recherche doit avoir au moins 3 lettres'));
   } else {
     let data = [];
     let messages = [[], []];
 
+    //Fetch apis (keep format)
     apiSearchToCheck.forEach((e) => {
       data.push(axios.get(e));
     });

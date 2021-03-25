@@ -4,12 +4,14 @@ A simple discord bot created to fetch api(s) and search players stats in live ga
 
 Currently it intergrate 2 apis from Hell Let Loose France which is in the `Globals/apis.js`.
 
+## Workflow
+
 ### Requirement
 
 Packages|Version
 ---|---
-nodejs| \>= 12
-npm|\> 6
+nodejs| \>= 12 (dev in 14.16.0)
+npm|\> 6 (dev in 6.4.1)
 pm2(optional)| anyone
 
 ### Setup
@@ -60,7 +62,7 @@ And if you want to run this in production, I recommend to use pm2.
       "just_name": "somename",
       "human_name": "Some Name",
       "name": "somename2",
-      "start": 100000,  //seconds elapsed
+      "start": 100000,  // ts start
       "end": null
     },
     "name": "Some Name Display",
@@ -150,7 +152,9 @@ const commands = {
 ```
 The fact that we have duplication here is because you have to check correctly the message before making an action.
 
-You have 2 types of checking message.
+And then if you make an action with args, you have to send the command to split the args.
+
+Speaking of.. You have 2 types of checking message.
 
 *Without arguments:*
 ```js
@@ -164,6 +168,10 @@ msg.content.indexOf(prefix + commands["keycommand"]) === 0
 
 One check is good create an Action in the `Actions` folder and add the action function. Be careful to pass the msg parameter. 
 It'll be necessary to send a reply for the user.
+
+#### Notes
+
+- Search is case insensitiv
 
 ___
 

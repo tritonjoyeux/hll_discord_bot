@@ -22,7 +22,8 @@ const commands = {
 //prefix + commands[KEY] === msg.content
 
 //Validation command wit arg(s)
-//msg.content.indexOf(prefix + commands[KEY])
+//msg.content.indexOf(prefix + commands[KEY]) === 0
+// + pass the command string in parameter
 
 client.on('message', async (msg) => {
   if (msg.channel.id === VT && msg.content.indexOf(prefix) === 0) {
@@ -32,7 +33,7 @@ client.on('message', async (msg) => {
     }
     // STATS SEARCH PLAYER
     else if (msg.content.indexOf(prefix + commands["search"]) === 0) {
-      searchAction(msg)
+      searchAction(msg, commands["search"])
     }
   }
 })
